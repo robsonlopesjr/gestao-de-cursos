@@ -1,4 +1,4 @@
-# Sistema de Gestão de Estoque
+# Sistema de Gestão de Cursos
 
 ## Descrição do Projeto
 
@@ -41,6 +41,16 @@ uv sync
 ### Configuração do Banco de Dados
 
 Nesse projeto foi utilizado o Banco de Dados Postgres com a imagem gerado via Docker em `infra/composer.yaml` e as credenciais de acesso estão em `.env.development`.
+
+Para subir a imagem do Banco de Dados Postgres:
+```bash
+docker compose -f infra/compose.yaml up -d
+```
+
+Para encerrar a imagem do Banco de Dados Postgres:
+```bash
+docker compose -f infra/compose.yaml down
+```
 
 Mas caso opte por outras configurações de Banco de Dados você pode estar alterando o arquivo `app/settings.py`:
 ```python
