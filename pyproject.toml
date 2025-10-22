@@ -12,7 +12,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "django-stubs>=5.2.7",
     "pre-commit>=4.3.0",
+    "pyright>=1.1.406",
     "ruff>=0.14.1",
 ]
 
@@ -26,3 +28,20 @@ select = ["I", "F", "E", "W", "PL", "PT"]
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.13"
+ignore = []
+include = []
+exclude = [
+    "**/.venv",
+    "**/__pycache__",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+    "**/migrations"
+]
+venv = ".venv"
+venvPath = "."
+executionEnvironments = [{ root = "." }]
+useLibraryCodeForTypes = true
