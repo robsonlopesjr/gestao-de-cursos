@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 
@@ -20,6 +22,21 @@ class Course(models.Model):
         auto_now_add=True, verbose_name="Data de criação"
     )
     updated_at = models.DateField(auto_now=True, verbose_name="Data de edição")
+
+    # Sobrescrever o método save
+    def save(self, *args, **kwargs):
+        # Verificar se o objeto já existe no banco de dados
+        if self.pk:
+            # Buscar o objeto atual no banco
+            old_image = Course.objects.get(pk=self.pk).image
+            # Comparar se a imagem foi alterada
+            if old_image and old_image != self.image:
+                # Remover a imagem antiga do sistema de arquivos
+                if os.path.isfile(old_image.path):
+                    os.remove(old_image.path)
+
+        # Dar continuidade ao salvamento do registro
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
