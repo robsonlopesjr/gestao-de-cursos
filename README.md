@@ -76,6 +76,11 @@ uv run manage.py migrate
 uv run manage.py createsuperuser
 ```
 
+### Executar as seeds para cadastrar registros de testes (Opcional).
+```bash
+uv run manage.py seed_courses
+```
+
 ### Execute o servidor de desenvolvimento.
 ```bash
 uv run manage.py runserver
