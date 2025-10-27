@@ -21,6 +21,7 @@ class Course(models.Model):
     description = models.TextField(
         blank=True, null=True, verbose_name="Descrição"
     )
+    situation = models.BooleanField(default=True, verbose_name="Situação")
     created_at = models.DateField(
         auto_now_add=True, verbose_name="Data de criação"
     )
