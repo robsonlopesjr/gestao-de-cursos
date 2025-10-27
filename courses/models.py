@@ -38,6 +38,14 @@ class Course(models.Model):
         # Dar continuidade ao salvamento do registro
         super().save(*args, **kwargs)
 
+    # Sobrescrever o método delete para remover a imagem
+    def delete(self, *args, **kwargs):
+        # Remover a imagem associada ao objeto
+        if self.image and os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        # Excluir o registro
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
