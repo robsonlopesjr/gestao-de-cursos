@@ -18,6 +18,9 @@ class Course(models.Model):
     image = models.ImageField(
         upload_to="courses/", blank=True, null=True, verbose_name="Imagem"
     )
+    description = models.TextField(
+        blank=True, null=True, verbose_name="Descrição"
+    )
     created_at = models.DateField(
         auto_now_add=True, verbose_name="Data de criação"
     )
