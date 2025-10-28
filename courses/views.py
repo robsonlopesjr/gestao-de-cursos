@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from .models import Course
+
 
 def home(request):
-    return render(request, "courses/home.html")
+    courses = Course.objects.filter(situation=True).order_by("-id")
+    return render(request, "courses/home.html", {"courses": courses})
 
 
 def about(request):
