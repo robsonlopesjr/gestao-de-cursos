@@ -8,8 +8,8 @@ def home(request):
     return render(request, "courses/home.html", {"courses": courses})
 
 
-def course(request, id):
-    course = get_object_or_404(Course, id=id)
+def course(request, slug):
+    course = get_object_or_404(Course, slug=slug)
     return render(request, "courses/course.html", {"course": course})
 
 
