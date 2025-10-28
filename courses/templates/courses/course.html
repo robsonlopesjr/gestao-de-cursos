@@ -1,18 +1,13 @@
 {% extends "courses/base.html" %}
 
-{% block title %}Página Inicial{% endblock title %}
+{% block title %}Detalhes do Curso{% endblock title %}
 
 {% block content %}
-
-{% for course in courses %}
 {% if course.image %}
     <p><img src={{ course.image.url }} alt="{{ course.name }}" style="width: 150px"></p>
 {% endif %}
 <p>Nome: {{ course.name }}</p>
 <p>Preço Original: R${{ course.original_price }}</p>
 <p>Preço com Desconto: R${{ course.discounted_price }}</p>
-<p><a href="{% url "course" id=course.id %}">Mais Detalhes</a></p>
-
-<hr />
-{% endfor %}
+<p>{{ course.description | safe }}</p>
 {% endblock content %}

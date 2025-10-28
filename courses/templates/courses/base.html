@@ -11,6 +11,10 @@
 </head>
 <body>
     <div class="container">
+        <a href="{% url 'home' %}">Home</a><br>
+        <a href="{% url 'about' %}">Sobre</a><br>
+        <a href="{% url 'contact' %}">Contato</a><br><br>
+
         {% block content %}{% endblock content %}
     </div>
 
