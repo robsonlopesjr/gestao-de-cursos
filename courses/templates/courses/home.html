@@ -3,5 +3,15 @@
 {% block title %}Página Inicial{% endblock title %}
 
 {% block content %}
-<h2>Home</h2>
+
+{% for course in courses %}
+{% if course.image %}
+    <p><img src={{ course.image.url }} alt="{{ course.name }}" style="width: 150px"></p>
+{% endif %}
+<p>Nome: {{ course.name }}</p>
+<p>Preço Original: R${{ course.original_price }}</p>
+<p>Preço com Desconto: R${{ course.discounted_price }}</p>
+
+<hr />
+{% endfor %}
 {% endblock content %}
