@@ -19,18 +19,21 @@ class Command(BaseCommand):
                 "original_price": 497.43,
                 "discounted_price": 347.61,
                 "description": description,
+                "slug": "curso-de-python",
             },
             {
                 "name": "Curso de Django",
                 "original_price": 597.43,
                 "discounted_price": 447.61,
                 "description": description,
+                "slug": "curso-de-django",
             },
             {
                 "name": "Curso de Python e Django",
                 "original_price": 997.43,
                 "discounted_price": 847.61,
                 "description": description,
+                "slug": "curso-de-python-e-django",
             },
         ]
 

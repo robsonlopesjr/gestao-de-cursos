@@ -22,6 +22,7 @@ class Course(models.Model):
         blank=True, null=True, verbose_name="Descrição"
     )
     situation = models.BooleanField(default=True, verbose_name="Situação")
+    slug = models.SlugField(unique=True, verbose_name="Slug")
     created_at = models.DateField(
         auto_now_add=True, verbose_name="Data de criação"
     )
