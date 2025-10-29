@@ -4,15 +4,37 @@
 
 {% block content %}
 
-{% for course in courses %}
-{% if course.image %}
-    <p><img src={{ course.image.url }} alt="{{ course.name }}" style="width: 150px"></p>
-{% endif %}
-<p>Nome: {{ course.name }}</p>
-<p>Preço Original: R${{ course.original_price }}</p>
-<p>Preço com Desconto: R${{ course.discounted_price }}</p>
-<p><a href="{% url "course" slug=course.slug %}">Mais Detalhes</a></p>
+<div class="container mt-4">
+    <div class="mb-2 pt-1 pb-4 list-courses">
+        <div class="bar-title-list-courses"></div>
+        <h4 class="title-list-courses">Cursos</h4>
+    </div>
 
-<hr />
-{% endfor %}
+    <div class="row">
+        {% for course in courses %}
+            <div class="col-md-4 mb-4">
+                <div class="card mb-4 shadow border-light h-100">
+                    {% if course.image %}
+                        <a href="{% url "course" slug=course.slug %}">
+                            <img src={{ course.image.url }} alt="{{ course.name }}" class="card-img-top">
+                        </a>
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <p class="card-text">
+                            <span class="text-muted">
+                                <del>
+                                    <small>R${{ course.original_price }}</small>
+                                </del>
+                            </span>
+                            <span class="text-success">R${{ course.discounted_price }}</span>
+                        </p>
+                        <a href="{% url "course" slug=course.slug %}" class="btn btn-primary btn-sm">Mais Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}
