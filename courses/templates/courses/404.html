@@ -1,0 +1,13 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}Página não encontrada{% endblock title %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center flex-grow-1 text-center">
+        <div>
+            <h1 class="display-4">404</h1>
+            <p class="lead">Página não encontrada</p>
+            <a href="{% url "home" %}" class="btn btn-primary mt-3">Voltar para a página inicial</a>
+        </div>
+    </div>
+{% endblock %}
