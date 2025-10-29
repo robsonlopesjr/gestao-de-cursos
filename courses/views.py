@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 
-from .models import Course
+from .models import About, Course
 
 
 def home(request):
@@ -17,7 +17,8 @@ def course(request, slug):
 
 
 def about(request):
-    return render(request, "courses/about.html")
+    abouts = About.objects.filter(situation=True).order_by("-id")
+    return render(request, "courses/about.html", {"abouts": abouts})
 
 
 def contact(request):
