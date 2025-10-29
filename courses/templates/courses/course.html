@@ -3,11 +3,35 @@
 {% block title %}Detalhes do Curso{% endblock title %}
 
 {% block content %}
-{% if course.image %}
-    <p><img src={{ course.image.url }} alt="{{ course.name }}" style="width: 150px"></p>
-{% endif %}
-<p>Nome: {{ course.name }}</p>
-<p>Preço Original: R${{ course.original_price }}</p>
-<p>Preço com Desconto: R${{ course.discounted_price }}</p>
-<p>{{ course.description | safe }}</p>
+<div class="container mt-5">
+    <div class="mb-2 pt-1 pb-4 list-courses">
+        <div class="bar-title-list-courses"></div>
+        <h4 class="title-list-courses">Curso</h4>
+    </div>
+
+    <div class="row m-1">
+        <div class="row g-0 border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+            <div class="col-12 col-md-8">
+                {% if course.image %}
+                    <img src="{{ course.image.url }}" alt="{{ course.name }}" class="img-fluid">
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-4 p-4 d-flex flex-column position-static">
+                <h3 class="d-inline-block mb-2 title-list-courses">{{ course.name }}</h3>
+
+                <div class="mb-2 text-muted"><del>R${{ course.original_price }}</del></div>
+
+                <h3 class="mb-4 text-success">R${{ course.discounted_price }}</h3>
+
+                <a href="{% url 'home' %}" class="btn btn-primary">Reservar Agora</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row shadow p-4 mb-4 m-1">
+        <p>{{ course.description | safe }}</p>
+    </div>
+
+    {% include "courses/course_suggestions.html" %}
+</div>
 {% endblock content %}
