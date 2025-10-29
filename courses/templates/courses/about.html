@@ -1,7 +1,41 @@
-{% extends "courses/base.html" %}
+{% extends 'courses/base.html' %}
 
 {% block title %}Sobre{% endblock title %}
 
 {% block content %}
-<h2>Sobre</h2>
-{% endblock content %}
+    <div class="container mt-5">
+        <div class="mb-2 pt-1 pb-4 list-courses">
+            <div class="bar-title-list-courses"></div>
+            <h4 class="title-list-courses">Sobre a Empresa</h4>
+        </div>
+
+        {% for about in abouts %}
+            {% if forloop.counter|divisibleby:2 %}
+                <div class="row featurette mb-5 p-3 shadow">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading fw-normal lh-1">{{ about.name }}</h2>
+                        <p class="lead">{{ about.description|safe }}</p>
+                    </div>
+
+                    <div class="col-md-5">
+                        {% if about.image %}
+                            <img src="{{ about.image.url }}" alt="{{ about.name }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" />
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="row featurette mb-5 p-3 shadow">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading fw-normal lh-1">{{ about.name }}</h2>
+                        <p class="lead">{{ about.description|safe }}</p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        {% if about.image %}
+                            <img src="{{ about.image.url }}" alt="{{ about.name }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" />
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
