@@ -1,3 +1,23 @@
 .bg-nav {
     background-color: #183181;
 }
+
+.list-courses {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bar-title-list-courses{
+    background-color: #0661a7;
+    height: 45px;
+    width: 5px;
+    margin-right: 10px;
+}
+
+.title-list-courses{
+    color: #324688;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
