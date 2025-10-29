@@ -9,8 +9,11 @@ def home(request):
 
 
 def course(request, slug):
+    courses = Course.objects.filter(situation=True).order_by("-id")[:3]
     course = get_object_or_404(Course, slug=slug)
-    return render(request, "courses/course.html", {"course": course})
+    return render(
+        request, "courses/course.html", {"course": course, "courses": courses}
+    )
 
 
 def about(request):
