@@ -104,3 +104,23 @@ class About(models.Model):
     class Meta:
         verbose_name = "sobre"
         verbose_name_plural = "sobre"
+
+
+class ConctactMessage(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Nome")
+    email = models.EmailField(verbose_name="E-mail")
+    subject = models.CharField(max_length=255, verbose_name="Assunto")
+    message = models.TextField(verbose_name="Mensagem")
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="Data de Criação"
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name="Data de Edição"
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "mensagem de contato"
+        verbose_name_plural = "mensagens de contato"
