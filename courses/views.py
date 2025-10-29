@@ -1,5 +1,7 @@
-from django.shortcuts import get_object_or_404, render
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import ContactForm
 from .models import About, Course
 
 
@@ -22,4 +24,19 @@ def about(request):
 
 
 def contact(request):
-    return render(request, "courses/contact.html")
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Mensagem enviada com sucesso!")
+            return redirect("contact")
+        else:
+            messages.error(
+                request,
+                "Erro ao enviar a mensagem. \
+                    Verifique os dados e tente novamente.",
+            )
+    else:
+        form = ContactForm()
+
+    return render(request, "courses/contact.html", {"form": form})
